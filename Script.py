@@ -15,39 +15,44 @@ class script(object):
 
 ✨ <i>ᴊᴏɪɴ ᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ ꜰᴏʀ ᴀɴ ᴀᴅ-ꜰʀᴇᴇ ᴇxᴘᴇʀɪᴇɴᴄᴇ!</i></b>"""
 
-    # 📊 ✅ FIXED: आपके स्क्रीनशॉट के अनुसार बिल्कुल हूबहू पर्पल नियॉन थीम आधारित स्टैट्स लेआउट
-    STATUS_TXT = """
-📊 <b>FAST FINDER SYSTEM STATS</b>
-<blockquote>
-🤵 Total Users: <b>{}</b>
-👥 Connected Groups: <b>{}</b>
-💎 Premium Members: <b>{}</b>
-</blockquote>
-🌐 <b>Data Centre</b>
-<blockquote>
-📁 Total Files: <b>{}</b>
-</blockquote>
-<blockquote>
-⚡ Primary : <b>{}</b> ✅ <b>{}</b>
-☁️ Cloud : <b>{}</b> ✅ <b>{}</b>
-♻️ Archive : <b>{}</b> ✅ <b>{}</b>
-</blockquote>
-<blockquote>
-🖼️ Total Cached Thumbs: <b>{}</b>
-</blockquote>
-⏰ <b>System Live Uptime:</b> <code>{}</code>
-"""
+    # 📊 ✅ NEW PREMIUM UI: एकदम नया मॉडर्न लुक जिसमें Directory भी शामिल है (Admin Only)
+    STATUS_TXT = """<b>🤖 𝐅ᴀ𝐬ᴛ 𝐅ɪ𝐧𝐝ᴇʀ 𝐒ʏ𝐬ᴛᴇᴍ 𝐓ᴇʟᴇᴍᴇᴛʀʏ</b>
 
-    # ✅ सिर्फ प्रीमियम यूज़र्स के लिए ग्लोबल लाइब्रेरी स्टैट्स
-    USER_STATUS_TXT = """📊 <b><u>FAST FINDER GLOBAL DATABASE</u></b>
+<b>👥 <u>ɴᴇᴛᴡᴏʀᴋ ᴅʏɴᴀᴍɪᴄs:</u></b>
+<blockquote><b>🤵 ᴜsᴇʀs:</b> <code>{}</code>
+<b>🏘️ ɢʀᴏᴜᴘs:</b> <code>{}</code>
+<b>💎 ᴘʀᴇᴍɪᴜᴍ:</b> <code>{}</code></blockquote>
 
-🗂️ <b>Available Library:</b>
-» Total Titles Locked: <code>{}</code>
-» Primary Storage: <code>{}</code>
-» Cloud Library: <code>{}</code>
-» Archive Backup: <code>{}</code>
+<b>🗄️ <u>ᴅᴀᴛᴀ ᴄᴇɴᴛʀᴇ (ᴛᴏᴛᴀʟ: {}):</u></b>
+<blockquote><b>🟢 ᴘʀɪᴍᴀʀʏ:</b> <code>{}</code> (🖼️ <code>{}</code>)
+<b>🔵 ᴄʟᴏᴜᴅ:</b> <code>{}</code> (🖼️ <code>{}</code>)
+<b>🟠 ᴀʀᴄʜɪᴠᴇ:</b> <code>{}</code> (🖼️ <code>{}</code>)</blockquote>
 
-⏰ <b>System Running Since:</b> <code>{}</code>"""
+<b>🗂️ <u>ᴜɴɪᴠᴇʀsᴀʟ ᴅɪʀᴇᴄᴛᴏʀʏ (ᴛᴏᴛᴀʟ: {}):</u></b>
+<blockquote><b>🎭 ᴀᴄᴛᴏʀs:</b> <code>{}</code>
+<b>📱 ᴀᴘᴘs:</b> <code>{}</code>
+<b>🌐 ᴡᴇʙsɪᴛᴇs:</b> <code>{}</code></blockquote>
+
+<b>⚙️ <u>ᴇɴɢɪɴᴇ ᴍᴇᴛʀɪᴄs:</u></b>
+<blockquote><b>🖼️ ɢʟᴏʙᴀʟ ᴛʜᴜᴍʙs:</b> <code>{}</code>
+<b>⏱️ ᴜᴘᴛɪᴍᴇ:</b> <code>{}</code></blockquote>"""
+
+    # ✅ सिर्फ प्रीमियम/नॉर्मल यूज़र्स के लिए ग्लोबल लाइब्रेरी स्टैट्स
+    USER_STATUS_TXT = """<b>📊 𝐅ᴀ𝐬ᴛ 𝐅ɪ𝐧𝐝ᴇʀ 𝐆ʟᴏʙᴀʟ 𝐋ɪʙʀᴀʀʏ</b>
+
+<b>🗄️ <u>ᴄᴏɴᴛᴇɴᴛ ᴠᴀᴜʟᴛ:</u></b>
+<blockquote><b>🚀 ᴛᴏᴛᴀʟ ᴛɪᴛʟᴇs:</b> <code>{}</code>
+<b>🟢 ᴘʀɪᴍᴀʀʏ:</b> <code>{}</code>
+<b>🔵 ᴄʟᴏᴜᴅ:</b> <code>{}</code>
+<b>🟠 ᴀʀᴄʜɪᴠᴇ:</b> <code>{}</code></blockquote>
+
+<b>🗂️ <u>ᴜɴɪᴠᴇʀsᴀʟ ᴅɪʀᴇᴄᴛᴏʀʏ:</u></b>
+<blockquote><b>🌟 ᴛᴏᴛᴀʟ ᴘʀᴏғɪʟᴇs:</b> <code>{}</code>
+<b>🎭 ᴀᴄᴛᴏʀs:</b> <code>{}</code>
+<b>📱 ᴀᴘᴘs:</b> <code>{}</code>
+<b>🌐 ᴡᴇʙsɪᴛᴇs:</b> <code>{}</code></blockquote>
+
+<b>⏱️ sʏsᴛᴇᴍ ʀᴜɴɴɪɴɢ sɪɴᴄᴇ:</b> <code>{}</code>"""
 
     NEW_GROUP_TXT = """<b>#NewGroup 👥\n\n• Title: {}\n• ID: <code>{}</code>\n• Username: {}\n• Total Members: <code>{}</code></b>"""
 
@@ -59,7 +64,6 @@ class script(object):
 » sᴘᴇʟʟɪɴɢ sʜᴏᴜʟᴅ ʙᴇ ᴄᴏʀʀᴇᴄᴛ (ᴄʜᴇᴄᴋ ɢᴏᴏɢʟᴇ)
 » sᴇᴀʀᴄʜ ᴡɪᴛʜ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ( things like 4k, Bluray, Season, Year हटा दें)</b>"""
 
-    # ✅ सिर्फ फाइल का नाम बोल्ड में क्लीन दिखेगा (No unwanted parameters)
     FILE_CAPTION = """<b>{file_name}</b>"""
 
     WELCOME_TEXT = """👋 Hello {mention}, Welcome to {title} group! 💞"""
@@ -72,7 +76,6 @@ Just type the movie or series name in my PM, open our Mini App, or add me into y
 I have many more features for you.
 Please check the commands below 👇</b>"""
 
-    # ✅ बिल्कुल साफ एडमिन लिस्ट और ग्रुप कंट्रोल्स (1024 कैरेक्टर लिमिट के अंदर फिक्स)
     ADMIN_COMMAND_TXT = """<b>👑 <u>Bot Admin Commands:</u> 👇
 
 • /stats - View database & user stats
@@ -98,7 +101,6 @@ Please check the commands below 👇</b>"""
 • /dlink | /removedlink - Auto-delete words
 • /dlinklist - View auto-delete triggers</b>"""
     
-    # ✅ प्रीमियम案 की डिटेल्स (Price / Per Day fixed)
     PLAN_TXT = """💎 <b>Fast Finder Premium Plans</b> 💎
 
 Activate a premium plan to unlock exclusive, high-speed features!
@@ -123,7 +125,6 @@ Activate a premium plan to unlock exclusive, high-speed features!
 • /fileid - Reply to media to extract its Telegram File ID
 • /ask or /ai - Chat with Gemini 2.5 Flash AI Assistant (10m Memory)</b>"""
 
-    # 📢 ✅ NEW: आपके नियमानुसार इंडेक्सिंग खत्म होने पर LOG_CHANNEL में भेजी जाने वाली सुपर रिपोर्ट टेम्पलेट
     LOG_INDEX_TXT = """📢 <b>#Indexing_Report 📊</b>
 
 <b>📂 Storage Parameters:</b>

@@ -440,9 +440,8 @@ async def api_edit_name(req):
 
         # 3. फाइल ट्रांसफर लॉजिक (Primary <-> Cloud <-> Archive)
         if col != target_col:
-            # नए अपडेटेड डेटा को डॉक्यूमेंट में मिलाएं
-            for k, v in update_fields.items():
-                doc[k] = v  
+            # ✅ फिक्स: पुराने डॉक्यूमेंट में नए बदलावों को merge करें (caption गायब नहीं होगा)
+            doc.update(update_fields)  
             
             # फाइल को नए कलेक्शन (Target) में डालें
             await COLLECTIONS[target_col].insert_one(doc)

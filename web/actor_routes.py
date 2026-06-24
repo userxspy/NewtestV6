@@ -35,36 +35,21 @@ async def actors_directory_page(req):
     <style>
         .dir-grid {{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }}
         @media(min-width: 768px) {{ .dir-grid {{ grid-template-columns: repeat(5, 1fr); gap: 20px; }} }}
-        
+
         .search-box {{ background:var(--card); border:1px solid var(--border); padding:16px; border-radius:12px; margin-bottom:25px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }}
         .s-row-1 {{ display: flex; gap: 10px; margin-bottom: 12px; }}
         .s-input {{ flex: 1; background:var(--bg3); border:1px solid var(--border); padding:12px 16px; color:var(--text); border-radius:8px; outline:none; font-family:inherit; font-weight:600; font-size:14px; transition:0.2s; }}
         .s-input:focus {{ border-color:var(--accent); }}
         .s-btn {{ background:var(--accent); color:#fff; border:none; padding:0 24px; border-radius:8px; font-weight:800; cursor:pointer; transition:0.2s; white-space:nowrap; }}
         .s-btn:hover {{ background:var(--accent-hover); transform:scale(1.02); }}
-        
+
         .s-row-2 {{ display: flex; gap: 10px; flex-wrap:wrap; align-items:center; }}
-        .cdd-wrap {{ position: relative; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--text); flex: 1; min-width: 100px; display: flex; justify-content: space-between; align-items: center; user-select: none; transition:0.2s; }}
-        .cdd-wrap:hover {{ border-color: var(--accent); }}
-        .cdd-menu {{ position: absolute; top: calc(100% + 5px); left: 0; right: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; z-index: 100; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }}
-        .cdd-item {{ padding: 10px 14px; border-bottom: 1px solid var(--border); transition: 0.2s; }}
-        .cdd-item:last-child {{ border-bottom: none; }}
-        .cdd-item:hover {{ background: var(--bg3); color: var(--accent); }}
-        
+
         .pg-bar {{ display:flex; justify-content:center; align-items:center; gap:15px; margin-top:30px; }}
         .pg-btn {{ background:var(--bg4); color:var(--text); border:1px solid var(--border); padding:8px 20px; border-radius:6px; font-weight:700; cursor:pointer; font-size:13px; transition:0.2s; }}
         .pg-btn:hover:not(:disabled) {{ background:var(--accent); color:#fff; border-color:var(--accent); }}
         .pg-btn:disabled {{ opacity:0.4; cursor:not-allowed; }}
         .pg-info {{ color:var(--text); font-weight:800; font-size:14px; background:var(--bg3); padding:6px 14px; border-radius:6px; border:1px solid var(--border); }}
-        
-        .act-card {{ background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.2); }}
-        .act-card:hover {{ transform:translateY(-6px); border-color:rgba(229,9,20,0.6); box-shadow:0 8px 22px rgba(229,9,20,0.25); }}
-        .act-card:active {{ transform:scale(0.95); transition:transform 0.1s; }}
-        
-        .act-poster {{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }}
-        .act-card:hover .act-poster {{ transform:scale(1.1); }}
-        
-        .act-text-card:active {{ transform:scale(0.97); transition:transform 0.1s; }}
     </style>
 
     <div class="search-box">
@@ -73,20 +58,26 @@ async def actors_directory_page(req):
             <button class="s-btn" onclick="resetDir(); searchDirectory()">Search</button>
         </div>
         <div class="s-row-2">
-            <div class="cdd-wrap" onclick="toggleDirCDD('cat', event)">
-                <span id="dir_cat_lbl">📂 All</span> <span style="font-size:10px; color:var(--muted);">▼</span>
-                <div class="cdd-menu" id="dir_cat_menu">
-                    <div class="cdd-item" onclick="pickDirCat('all', '📂 All', event)">📂 All</div>
-                    <div class="cdd-item" onclick="pickDirCat('actor', '🎭 Actor', event)">🎭 Actor</div>
-                    <div class="cdd-item" onclick="pickDirCat('app', '📱 App', event)">📱 App</div>
-                    <div class="cdd-item" onclick="pickDirCat('website', '🌐 Website', event)">🌐 Website</div>
+            <div class="cdd-wrap" id="dir_cat_wrap">
+                <div class="cdd-btn" id="dir_cat_btn" onclick="toggleDirCDD('cat', event)">
+                    <span id="dir_cat_lbl">📂 All</span>
+                </div>
+                <span class="cdd-arrow">&#9660;</span>
+                <div class="cdd-menu" id="dir_cat_menu" style="display:none;">
+                    <div class="cdd-item selected" onclick="pickDirCat('all', '📂 All', event)">📂 All<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
+                    <div class="cdd-item" onclick="pickDirCat('actor', '🎭 Actor', event)">🎭 Actor<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
+                    <div class="cdd-item" onclick="pickDirCat('app', '📱 App', event)">📱 App<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
+                    <div class="cdd-item" onclick="pickDirCat('website', '🌐 Website', event)">🌐 Website<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
                 </div>
             </div>
-            <div class="cdd-wrap" onclick="toggleDirCDD('mode', event)">
-                <span id="dir_mode_lbl">🖼️ Poster</span> <span style="font-size:10px; color:var(--muted);">▼</span>
-                <div class="cdd-menu" id="dir_mode_menu">
-                    <div class="cdd-item" onclick="pickDirMode('poster', '🖼️ Poster', event)">🖼️ Poster</div>
-                    <div class="cdd-item" onclick="pickDirMode('text', '📄 Text', event)">📄 Text</div>
+            <div class="cdd-wrap" id="dir_mode_wrap">
+                <div class="cdd-btn" id="dir_mode_btn" onclick="toggleDirCDD('mode', event)">
+                    <span id="dir_mode_lbl">🖼️ Poster</span>
+                </div>
+                <span class="cdd-arrow">&#9660;</span>
+                <div class="cdd-menu" id="dir_mode_menu" style="display:none;">
+                    <div class="cdd-item selected" onclick="pickDirMode('poster', '🖼️ Poster', event)">🖼️ Poster<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
+                    <div class="cdd-item" onclick="pickDirMode('text', '📄 Text', event)">📄 Text<span class="cdd-radio"><span class="cdd-radio-dot"></span></span></div>
                 </div>
             </div>
             {admin_btn}
@@ -137,19 +128,39 @@ async def actors_directory_page(req):
         }}
     }});
 
-    function closeAllDirCDD() {{ document.getElementById('dir_cat_menu').style.display='none'; document.getElementById('dir_mode_menu').style.display='none'; }}
+    function closeAllDirCDD() {{
+        document.getElementById('dir_cat_menu').style.display='none';
+        document.getElementById('dir_cat_btn').classList.remove('open');
+        document.getElementById('dir_mode_menu').style.display='none';
+        document.getElementById('dir_mode_btn').classList.remove('open');
+    }}
     document.addEventListener('click', closeAllDirCDD);
 
     function toggleDirCDD(type, e) {{
         e.stopPropagation();
         var menu = document.getElementById('dir_' + type + '_menu');
+        var btn  = document.getElementById('dir_' + type + '_btn');
         var isVis = menu.style.display === 'block';
         closeAllDirCDD();
-        if (!isVis) menu.style.display = 'block';
+        if (!isVis) {{ menu.style.display = 'block'; btn.classList.add('open'); }}
     }}
 
-    function pickDirCat(val, lbl, e) {{ e.stopPropagation(); currentCat = val; document.getElementById('dir_cat_lbl').innerText = lbl; closeAllDirCDD(); resetDir(); searchDirectory(); }}
-    function pickDirMode(val, lbl, e) {{ e.stopPropagation(); currentMode = val; document.getElementById('dir_mode_lbl').innerText = lbl; closeAllDirCDD(); resetDir(); searchDirectory(); }}
+    function pickDirCat(val, lbl, e) {{
+        e.stopPropagation();
+        currentCat = val;
+        document.getElementById('dir_cat_lbl').innerText = lbl;
+        document.querySelectorAll('#dir_cat_menu .cdd-item').forEach(function(i){{i.classList.remove('selected');}});
+        e.currentTarget.classList.add('selected');
+        closeAllDirCDD(); resetDir(); searchDirectory();
+    }}
+    function pickDirMode(val, lbl, e) {{
+        e.stopPropagation();
+        currentMode = val;
+        document.getElementById('dir_mode_lbl').innerText = lbl;
+        document.querySelectorAll('#dir_mode_menu .cdd-item').forEach(function(i){{i.classList.remove('selected');}});
+        e.currentTarget.classList.add('selected');
+        closeAllDirCDD(); resetDir(); searchDirectory();
+    }}
 
     async function searchDirectory(forceRestore = false) {{
         var q = document.getElementById('dir_q').value.trim();

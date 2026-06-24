@@ -67,7 +67,7 @@ CSS = """
 .act-card:hover .act-poster{transform:scale(1.1)}
 .act-text-card:active{transform:scale(0.97);transition:transform .1s}
 
-/* ── UNIVERSAL CUSTOM DROPDOWN (DRY GLOBAL) ── */
+/* ── UNIVERSAL CUSTOM DROPDOWN - PILL (DRY GLOBAL) ── */
 .cdd-wrap{flex:0 1 auto;min-width:0;position:relative;user-select:none}
 .cdd-btn{width:170px;background:var(--bg3);color:var(--text);border:1.5px solid var(--border);border-radius:999px;padding:8px 28px 8px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:flex-start;gap:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color .15s,box-shadow .15s}
 .cdd-btn:hover,.cdd-btn.open{border-color:var(--accent);box-shadow:0 0 0 3px rgba(229,9,20,0.12)}
@@ -83,6 +83,22 @@ CSS = """
 .cdd-item.selected .cdd-radio{border-color:var(--accent)}
 .cdd-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
 .cdd-item.selected .cdd-radio-dot{display:block}
+
+/* ── FULL-WIDTH FORM DROPDOWN (Create/Edit modals) ── */
+.ca-cdd-wrap{position:relative;margin-bottom:12px}
+.ca-cdd-btn{width:100%;background:var(--bg3);color:var(--text);border:1.5px solid var(--border);border-radius:8px;padding:12px 40px 12px 16px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;box-sizing:border-box;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color .15s,box-shadow .15s;text-align:left}
+.ca-cdd-btn:hover,.ca-cdd-btn.open{border-color:var(--accent);box-shadow:0 0 0 3px rgba(229,9,20,0.12)}
+.ca-cdd-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:10px;color:var(--muted);transition:transform .2s}
+.ca-cdd-btn.open+.ca-cdd-arrow{transform:translateY(-50%) rotate(180deg)}
+.ca-cdd-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--bg2,var(--bg3));border:1.5px solid var(--border);border-radius:12px;overflow:hidden;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.45);display:none;animation:cddIn .15s ease}
+.ca-cdd-item{display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:13px;font-weight:700;color:var(--text);cursor:pointer;transition:background .12s;border-bottom:1px solid var(--border)}
+.ca-cdd-item:last-child{border-bottom:none}
+.ca-cdd-item:hover{background:var(--bg3)}
+.ca-cdd-item.selected{color:var(--accent)}
+.ca-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
+.ca-cdd-item.selected .ca-radio{border-color:var(--accent)}
+.ca-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
+.ca-cdd-item.selected .ca-radio-dot{display:block}
 """
 
 JS = """

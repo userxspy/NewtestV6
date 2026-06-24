@@ -43,27 +43,6 @@ CARD_CSS = """
 .search-btn.ripple-go::after{animation:btnRipple .45s ease-out forwards}
 @keyframes btnRipple{0%{background:rgba(255,255,255,0.28);transform:scale(.6)}100%{background:rgba(255,255,255,0);transform:scale(1.6)}}
 
-/* ── Custom dropdown ── */
-.cdd-wrap{flex:0 1 auto;min-width:0;position:relative;user-select:none}
-.cdd-btn{width:170px;background:var(--bg3);color:var(--text);border:1.5px solid var(--border);border-radius:999px;padding:8px 28px 8px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:flex-start;gap:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:border-color .15s,box-shadow .15s}
-.cdd-btn:hover,.cdd-btn.open{border-color:var(--accent);box-shadow:0 0 0 3px rgba(229,9,20,0.12)}
-.cdd-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:9px;color:var(--muted);transition:transform .2s}
-.cdd-btn.open+.cdd-arrow{transform:translateY(-50%) rotate(180deg)}
-
-.cdd-menu{position:absolute;top:calc(100% + 7px);left:50%;transform:translateX(-50%);min-width:max-content;background:var(--bg2,var(--bg3));border:1.5px solid var(--border);border-radius:16px;overflow:hidden;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.45);animation:cddIn .15s ease}
-@keyframes cddIn{
-    from{opacity:0;transform:translate(-50%, -6px)}
-    to{opacity:1;transform:translate(-50%, 0)}
-}
-
-.cdd-item{display:flex;align-items:center;gap:10px;padding:13px 14px;font-size:13px;font-weight:700;color:var(--text);cursor:pointer;transition:background .12s;border-bottom:1px solid var(--border)}
-.cdd-item:last-child{border-bottom:none}
-.cdd-item:hover{background:var(--bg3)}
-.cdd-item.selected{color:var(--accent)}
-.cdd-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
-.cdd-item.selected .cdd-radio{border-color:var(--accent)}
-.cdd-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:none}
-.cdd-item.selected .cdd-radio-dot{display:block}
 </style>
 """
 
